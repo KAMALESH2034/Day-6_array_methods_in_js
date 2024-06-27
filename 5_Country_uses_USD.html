@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let xhr_req = new XMLHttpRequest();
+        xhr_req.open("GET","https://restcountries.com/v2/all")
+        xhr_req.send();
+
+        xhr_req.onload = function(){
+            let result = JSON.parse(xhr_req.response);
+            var dollars = result.filter((n) =>
+             {
+                for(let key in n.currencies){
+                    if(n.currencies[key].code === "USD"){
+                        return n;
+                    }
+                }
+                
+                })
+
+                console.log(dollars);
+
+            }
+    
+    
+    
+    
+    </script>
+    
+</body>
+</html>
